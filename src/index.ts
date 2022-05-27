@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import  router  from './routes/routes'
-import dbConnection  from './db/config'
+import dbConnection  from './config/db/config'
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));

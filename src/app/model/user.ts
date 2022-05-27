@@ -5,7 +5,11 @@ import bcrypt from "bcrypt";
 const userSchema: Schema<Iuser> = new Schema<Iuser>(
     {
         _id: String,
-        name: {
+        username: {
+            type: String,
+            required: true
+        },        
+        email: {
             type: String,
             required: true
         },
@@ -13,8 +17,7 @@ const userSchema: Schema<Iuser> = new Schema<Iuser>(
             type: String, 
             required: true,
             select: false
-        },  
-
+        },
     },
     {
         timestamps: true,

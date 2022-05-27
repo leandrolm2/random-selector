@@ -2,10 +2,10 @@
 
 ## Hey guys! 👋
 
-This is a project to learn use noSQL database and pratice and improve my skills as a developer
+This is a project to learn use noSQL database(mongoDb) as well as pratice and improve my skills
 
 ---
-## Tech involved 💾
+## Tech involved 💻
 - mongoose
 - Typescript
 - express
@@ -15,6 +15,7 @@ This is a project to learn use noSQL database and pratice and improve my skills 
 - Authentication and Authorization
 - Implement APIs using Controllers, Models, Middlewares, routes
 - Yarn to manage the packages 
+- Use mongoose ORM
 
 ## Note 📝
 
