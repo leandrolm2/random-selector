@@ -2,10 +2,8 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import User from '../model/user'
-import logging from '../../config/logging';
 import signJWT from '../../function/singJWT'
 import bcrypt from "bcrypt";
-const NAMESPACE = 'User';
 class UserController {
     public async create(req: Request, res: Response){
         const {username, password, email} = req.body
@@ -30,14 +28,6 @@ class UserController {
         }
 
     }
-
-    public async validateToken(req: Request, res: Response, next: NextFunction) {
-        logging.info(NAMESPACE, 'Token validated, user authorized.');
-    
-        return res.status(200).json({
-            message: 'Token(s) validated'
-        });
-    };
 
     public async login(req: Request, res: Response){
         const { username, password } = req.body;

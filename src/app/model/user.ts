@@ -18,6 +18,10 @@ const userSchema: Schema<Iuser> = new Schema<Iuser>(
             required: true,
             select: false
         },
+        category_nameId: {
+            type: [String],
+            requeried: false
+        }
     },
     {
         timestamps: true,
