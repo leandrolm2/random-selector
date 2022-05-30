@@ -84,6 +84,10 @@ class UserController {
             return res.status(500).json({ message:'somenthing went wrong'})
         }        
     }
+
+    public async logout(req: Request, res: Response){
+
+    }
 }
 
 export default new UserController();

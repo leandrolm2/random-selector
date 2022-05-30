@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - controller and routes to tags
 ### Changed
-## routes user
+### routes user
   
 | http method   |  old routes  |  new routes  |
 | :-----------  | :----------- |  :---------- |
@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 |  put          | /update_user |  /user       |
 |  delete       | /delete_user |  /user       |
 
-## routes category
+### routes category
   
 | http method   |  old routes                    |  new routes            |
 | :------------ | :----------------------------- |  :-------------------- |
@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 |  put          | /get_categories                |  /category/:category   |
 |  delete       | /delete_category/:category     |  /category/:category   |
 
-## routes tags
+### routes tags
   
 | http method   |  old routes                    |  new routes            |
 | :------------ | :----------------------------- |  :-------------------- |
