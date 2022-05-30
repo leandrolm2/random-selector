@@ -36,7 +36,7 @@ class TagsController{
 
             return res.status(200).send(foundCategory?.tags)
         }catch(err){
-            return res.status(500).send({message: 'Something went wrong'})
+            return res.status(404).send({message: 'Tags not found or does not exist'})
         }
     }
 
