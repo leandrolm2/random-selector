@@ -9,7 +9,7 @@ class CategoryController {
         const userId = res.locals.jwt.id
 
         try{
-            const cat = await User.findOne({user_id: userId})
+            const cat = await User.findOne({_id: userId})
 
             const newCategory = new Category({
                 _id: new mongoose.Types.ObjectId(),
@@ -34,11 +34,11 @@ class CategoryController {
         const userId = res.locals.jwt.id
 
         try{
-            const user = await User.findOne({user_id: userId});
+            const user = await User.findOne({_id: userId});
+            let count = 0
 
             if(!user) return res.status(404).json({message:'Category not found'});
 
-            let count = 0
             for(let userCat of user.category_nameId){
                 if(userCat === category) {
                     user.category_nameId.splice(count, 1)
@@ -58,10 +58,11 @@ class CategoryController {
     }
 
     public async getCategories(req: Request, res: Response, next: NextFunction) {
-        const userId = res.locals.jwt.id
+        const userId = res.locals.jwt
 
         try{
-           const cat = await User.findOne({user_id: userId});
+           const cat = await User.findOne({_id: userId.id});
+           console.log(cat)
         
            return res.status(200).json({message: cat?.category_nameId})
         }catch(err){

@@ -9,9 +9,15 @@ router.get('/ping', (req: Request ,res: Response) => {
     return res.send('pong')
 })
 
+/**
+ * user routes
+ */
 router.post('/create_user',UserController.create)
 router.post('/login_user', UserController.login)
 
+/**
+ * middleware
+ */
 router.use(extractJWT)
 
 /**
@@ -19,10 +25,13 @@ router.use(extractJWT)
  */
 router.post('/create_category', CategoryController.createCategory)
 router.delete('/delete_category/:category', CategoryController.deleteCategory)
-router.get('/get_categories', CategoryController.getCategories)
+router.get('/get_categories' ,CategoryController.getCategories)
 
 /**
  * tags routes
  */
 router.post('/create_tag', TagsController.create)
+router.delete('/delete_tag/:tag/:category', TagsController.delete)
+router.get('/get_tags/:category', TagsController.tagsList)
+
 export default router 

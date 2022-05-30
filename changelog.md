@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 * tags controller
+- change
+
+## [0.1.0] - 2017-06-20
+### Added
+- controller and routes to tags
+### Changed
+- Fixed bugs on categoryController
+### Removed
+## [Unreleased]
+* tags controller
 - delete
 - change
 - get all
