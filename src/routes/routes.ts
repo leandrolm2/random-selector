@@ -37,5 +37,6 @@ router.post('/create_tag', TagsController.create)
 router.delete('/delete_tag/:tag/:category', TagsController.delete)
 router.get('/get_tags/:category', TagsController.tagsList)
 router.put('/get_tags/:category', TagsController.update)
+router.get('/randomTag_tag/:category', TagsController.randomSelector)
 
 export default router 

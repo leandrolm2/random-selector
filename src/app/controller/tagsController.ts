@@ -68,6 +68,21 @@ class TagsController{
         }
     }
 
+    public async randomSelector(req: Request, res: Response, next: NextFunction){
+        const {category} = req.params
+        const userId = res.locals.jwt.id
+        try{
+            const cat = await Category.findOne({user_id: userId, categoryName: category})
+            const randomTag = Math.floor(Math.random() * Number(cat!.tags.length))
+            
+            if(!cat) return res.status(404).json({message: 'category not found'})
+            
+            return res.status(200).send({message: `drawn tag: ${cat.tags[randomTag]}`})
+        }catch(err){
+            return res.status(500).send({message: 'somenthing went wrong'})
+        }
+    }
+
     public async update(req: Request, res: Response, next: NextFunction){
         const { category, tag, newTag } = req.body
         const userId = res.locals.jwt.id
