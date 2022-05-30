@@ -62,11 +62,28 @@ class CategoryController {
 
         try{
            const cat = await User.findOne({_id: userId.id});
-           console.log(cat)
+           
+           if(!cat) return res.status(404).json({message: 'category not found'})
         
            return res.status(200).json({message: cat?.category_nameId})
         }catch(err){
             return res.status(404).send({message: 'category not found'})
+        }
+    }
+
+    public async update(req: Request, res: Response, next: NextFunction){
+        const { category } = req.body
+        const userId = res.locals.jwt.id
+
+        try{
+            const cat = await Category.findOne({user_id: userId, categoryName: category})
+            if(!cat) return res.status(404).json({message: 'category not found'})
+            cat.categoryName = category
+            cat.save()
+            return res.status(200).send({message: `category name change to ${category}`})
+
+        }catch(err){
+            return res.status(500).send({message: 'somenthing went wrong'})
         }
     }
 }

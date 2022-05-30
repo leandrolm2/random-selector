@@ -31,7 +31,7 @@ class TagsController{
         try{
             const foundCategory = await Category
             .findOne({user_id: userId, categoryName: category})
-
+            if(!foundCategory) return res.status(404).send({message: `category from tags not found`})
             if(foundCategory!.tags.length < 0) return res.status(404).send({message:'This Category has no tags added to it'})
 
             return res.status(200).send(foundCategory?.tags)
@@ -65,6 +65,30 @@ class TagsController{
         }catch(err){
             console.log(err)
             return res.status(400).send({message: 'somenthing went wrong'})
+        }
+    }
+
+    public async update(req: Request, res: Response, next: NextFunction){
+        const { category, tag, newTag } = req.body
+        const userId = res.locals.jwt.id
+
+        try{
+            const cat = await Category.findOne({user_id: userId, categoryName: category})
+            
+            if(!cat) return res.status(404).json({message: 'category not found'})
+            
+            for(let i = 0; i < cat.tags.length; i++){
+                if(cat.tags[i] === tag){
+                    cat.tags.splice(i, 1, newTag)
+                    cat.save()
+                    return res.status(204).send({message: `${tag} changed to ${newTag}`})
+                }
+            }
+
+            return res.status(404).send({message: `tag ${tag} not found`})
+
+        }catch(err){
+            return res.status(500).send({message: 'somenthing went wrong'})
         }
     }
 }
