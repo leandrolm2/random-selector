@@ -12,10 +12,10 @@ router.get('/ping', (req: Request ,res: Response) => {
 /**
  * user routes
  */
-router.post('/create_user',UserController.create)
-router.post('/login_user', UserController.login)
-router.put('/update_user', extractJWT , UserController.update)
-router.delete('/delete_user', extractJWT , UserController.delete)
+router.post('/user',UserController.create)
+router.post('/user/login', UserController.login)
+router.put('/user', extractJWT , UserController.update)
+router.delete('/user', extractJWT , UserController.delete)
 
 /**
  * middleware
@@ -25,18 +25,18 @@ router.use(extractJWT)
 /**
  * category routes
  */
-router.post('/create_category', CategoryController.createCategory)
-router.delete('/delete_category/:category', CategoryController.deleteCategory)
-router.get('/get_categories' ,CategoryController.getCategories)
-router.put('/get_categories' ,CategoryController.update)
+router.post('/category', CategoryController.createCategory)
+router.delete('category/:category', CategoryController.deleteCategory)
+router.get('/category' ,CategoryController.getCategories)
+router.put('/category/:category' ,CategoryController.update)
 
 /**
  * tags routes
  */
-router.post('/create_tag', TagsController.create)
-router.delete('/delete_tag/:tag/:category', TagsController.delete)
-router.get('/get_tags/:category', TagsController.tagsList)
-router.put('/get_tags/:category', TagsController.update)
-router.get('/randomTag_tag/:category', TagsController.randomSelector)
+router.post('/tag', TagsController.create)
+router.delete('/tag/:tag/:category', TagsController.delete)
+router.get('/tag/:category', TagsController.tagsList)
+router.put('/tag/:category', TagsController.update)
+router.get('/ramdomTag/:category', TagsController.randomSelector)
 
 export default router 

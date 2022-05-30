@@ -72,11 +72,11 @@ class CategoryController {
     }
 
     public async update(req: Request, res: Response, next: NextFunction){
-        const { category } = req.body
+        const { category } = req.params
         const userId = res.locals.jwt.id
 
         try{
-            const cat = await Category.findOne({user_id: userId, categoryName: category})
+            const cat = await Category.findOne({user_id: userId, _id: category})
             if(!cat) return res.status(404).json({message: 'category not found'})
             cat.categoryName = category
             cat.save()
